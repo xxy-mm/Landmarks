@@ -14,5 +14,16 @@ struct LandmarksApp: App {
         WindowGroup {
             ContentView().environment(modelData)
         }
+        #if !os(watchOS)
+        .commands {
+            LandmarkCommands()
+        }
+        #endif
+
+        #if os(macOS)
+        Settings {
+            LandmarkSettings()
+        }
+        #endif
     }
 }
